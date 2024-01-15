@@ -19,7 +19,6 @@ public class IntroActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityIntroBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        
         setVariable();
         getWindow().setStatusBarColor(Color.parseColor("#FFE4B5"));
     }
