@@ -85,7 +85,7 @@
                         android:layout_weight="1"
                         android:background="@color/grey"
                         android:ems="10"
-                        android:hint="Search Food..."
+                        android:hint="Bạn đang thèm món gì?"
                         android:inputType="text"
                         android:padding="8dp"
                         android:textAlignment="center"
