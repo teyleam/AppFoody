@@ -1,6 +1,7 @@
 package com.aplication.appfoody.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aplication.appfoody.Activity.ListFoodsActivity;
 import com.aplication.appfoody.Domain.Category;
 import com.aplication.appfoody.Domain.Foods;
 import com.aplication.appfoody.R;
@@ -81,8 +83,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
 
         Glide.with(context)
                 .load(drawableResourceId)
-
                 .into(holder.pic);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ListFoodsActivity.class);
+                intent.putExtra("CategoryId", items.get(position).getId());
+                intent.putExtra("CategoryName",items.get(position).getName());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
