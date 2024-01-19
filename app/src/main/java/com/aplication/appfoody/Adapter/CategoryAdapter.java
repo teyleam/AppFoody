@@ -2,6 +2,7 @@ package com.aplication.appfoody.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
     ArrayList<Category> items;
     Context context;
 
-    public CategoryAdapter(ArrayList<Category> items) {
+    public CategoryAdapter(Context context ,ArrayList<Category> items) {
+        this.context = context;
         this.items = items;
     }
 
@@ -91,6 +93,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
                 Intent intent = new Intent(context, ListFoodsActivity.class);
                 intent.putExtra("CategoryId", items.get(position).getId());
                 intent.putExtra("CategoryName",items.get(position).getName());
+                Log.d("CatId: ",String.valueOf(items.get(position).getId()));
                 context.startActivity(intent);
             }
         });

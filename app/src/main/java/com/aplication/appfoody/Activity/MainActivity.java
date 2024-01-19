@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -64,6 +65,7 @@ public class MainActivity extends BaseActivity {
                     }
                     binding.progressBarBestFood.setVisibility(View.GONE);
                 }
+
             }
 
             @Override
@@ -83,17 +85,21 @@ public class MainActivity extends BaseActivity {
                     for(DataSnapshot issue: snapshot.getChildren()){
                         list.add(issue.getValue(Category.class));
                     }
+                    Log.d("CateList: ",list.toString());
                     if(list.size()>0){
                         binding.categoryView.setLayoutManager(new GridLayoutManager(MainActivity.this,4));
-                        RecyclerView.Adapter adapter = new CategoryAdapter(list);
+                        RecyclerView.Adapter adapter = new CategoryAdapter(MainActivity.this,list);
                         binding.categoryView.setAdapter(adapter);
                     }
                     binding.progressBarCategory.setVisibility(View.GONE);
                 }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.e("FirebaseError", "Error: " + error.getMessage());
+                binding.progressBarCategory.setVisibility(View.GONE);
 
             }
         });
