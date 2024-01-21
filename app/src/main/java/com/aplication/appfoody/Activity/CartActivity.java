@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
+import com.aplication.appfoody.Adapter.CartAdapter;
+import com.aplication.appfoody.Helper.ChangeNumberItemsListener;
 import com.aplication.appfoody.Helper.ManagmentCart;
 import com.aplication.appfoody.R;
 import com.aplication.appfoody.databinding.ActivityCartBinding;
@@ -40,7 +42,13 @@ public class CartActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         binding.cardView.setLayoutManager(linearLayoutManager);
-        adapter = new
+        adapter = new CartAdapter(managmentCart.getListCart(), this, new ChangeNumberItemsListener() {
+            @Override
+            public void change() {
+                calculateCart();
+            }
+        });
+        binding.cardView.setAdapter(adapter);
     }
 
     private void calculateCart() {
