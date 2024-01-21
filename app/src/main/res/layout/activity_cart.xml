@@ -17,7 +17,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrow" />
 
+    <TextView
+        android:id="@+id/emptyTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue_grey"
+        android:text="Giỏ hàng của bạn trống"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
+
     <ScrollView
+        android:id="@+id/scrollviewCart"
         style="@style/textStyleBold"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -124,7 +137,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/totalFeeTxt"
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,24 +147,24 @@
                     app:layout_constraintTop_toTopOf="@+id/textView20" />
 
                 <TextView
-                    android:id="@+id/textView25"
+                    android:id="@+id/deliveryTxt"
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="$-"
-                    app:layout_constraintEnd_toEndOf="@+id/textView24"
-                    app:layout_constraintTop_toBottomOf="@+id/textView24" />
+                    app:layout_constraintEnd_toEndOf="@+id/totalFeeTxt"
+                    app:layout_constraintTop_toBottomOf="@+id/totalFeeTxt" />
 
                 <TextView
-                    android:id="@+id/textView26"
+                    android:id="@+id/taxTxt"
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="$-"
-                    app:layout_constraintEnd_toEndOf="@+id/textView25"
-                    app:layout_constraintTop_toBottomOf="@+id/textView25" />
+                    app:layout_constraintEnd_toEndOf="@+id/deliveryTxt"
+                    app:layout_constraintTop_toBottomOf="@+id/deliveryTxt" />
 
                 <View
                     android:id="@+id/view3"
@@ -176,7 +189,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/view3" />
 
                 <TextView
-                    android:id="@+id/textView28"
+                    android:id="@+id/totalTxt"
                     style="@style/textStyleBold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -190,15 +203,15 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button5"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:layout_marginTop="16dp"
                 style="@style/Widget.AppCompat.Button"
-                android:textColor="@color/white"
-                android:background="@drawable/red_button_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đặt Hàng" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/red_button_background"
+                android:text="Đặt Hàng"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
