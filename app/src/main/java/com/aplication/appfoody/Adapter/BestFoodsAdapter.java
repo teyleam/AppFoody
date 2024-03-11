@@ -39,13 +39,13 @@ public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.view
 
     @Override
     public void onBindViewHolder(@NonNull BestFoodsAdapter.viewholder holder, int position) {
-        holder.titleTxt.setText(items.get(position).getTitle());
-        holder.priceTxt.setText("$"+items.get(position).getPrice());
-        holder.timeTxt.setText(items.get(position).getTimeValue()+ "min");
-        holder.starTxt.setText(""+items.get(position).getStar());
+        holder.titleTxt.setText(items.get(holder.getAdapterPosition()).getTitle());
+        holder.priceTxt.setText("$"+items.get(holder.getAdapterPosition()).getPrice());
+        holder.timeTxt.setText(items.get(holder.getAdapterPosition()).getTimeValue()+ "min");
+        holder.starTxt.setText(""+items.get(holder.getAdapterPosition()).getStar());
 
         Glide.with(context)
-                .load(items.get(position).getImagePath())
+                .load(items.get(holder.getAdapterPosition()).getImagePath())
                 .transform(new CenterCrop(), new RoundedCorners(30))
                 .into(holder.pic);
 
@@ -53,7 +53,7 @@ public class BestFoodsAdapter extends RecyclerView.Adapter<BestFoodsAdapter.view
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("object",items.get(position));
+                intent.putExtra("object",items.get(holder.getAdapterPosition()));
                 context.startActivity(intent);
             }
         });

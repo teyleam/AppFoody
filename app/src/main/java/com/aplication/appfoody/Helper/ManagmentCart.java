@@ -32,12 +32,12 @@ public class ManagmentCart {
         }else{
             listpop.add(item);
         }
-        dataBase.putListObject("CartList",listpop);
+        dataBase.putListObject("object",listpop);
         Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show();
     }
 
     public ArrayList<Foods> getListCart() {
-        return dataBase.getListObject("CartList");
+        return dataBase.getListObject("object");
     }
 
     public Double getTotalFee(){
@@ -54,12 +54,12 @@ public class ManagmentCart {
         }else{
             listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart()-1);
         }
-        dataBase.putListObject("CartList",listItem);
+        dataBase.putListObject("object",listItem);
         changeNumberItemsListener.change();
     }
     public  void plusNumberItem(ArrayList<Foods> listItem,int position,ChangeNumberItemsListener changeNumberItemsListener){
         listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart()+1);
-        dataBase.putListObject("CartList",listItem);
+        dataBase.putListObject("object",listItem);
         changeNumberItemsListener.change();
     }
 }

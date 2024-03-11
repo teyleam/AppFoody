@@ -80,7 +80,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
             }
         }
 
-        int drawableResourceId = context.getResources().getIdentifier(items.get(position).getImagePath()
+        int drawableResourceId = context.getResources().getIdentifier(items.get(holder.getAdapterPosition()).getImagePath()
                 , "drawable",holder.itemView.getContext().getPackageName());
 
         Glide.with(context)
@@ -91,9 +91,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ListFoodsActivity.class);
-                intent.putExtra("CategoryId", items.get(position).getId());
-                intent.putExtra("CategoryName",items.get(position).getName());
-                Log.d("CatId: ",String.valueOf(items.get(position).getId()));
+                intent.putExtra("CategoryId", items.get(holder.getAdapterPosition()).getId());
+                intent.putExtra("CategoryName",items.get(holder.getAdapterPosition()).getName());
+                Log.d("CatId: ",String.valueOf(items.get(holder.getAdapterPosition()).getId()));
                 context.startActivity(intent);
             }
         });

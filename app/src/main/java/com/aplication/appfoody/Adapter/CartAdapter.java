@@ -41,22 +41,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CartAdapter.viewholder holder, int position) {
-        holder.title.setText(list.get(position).getTitle());
-        holder.feeEachItem.setText("$" + list.get(position).getPrice());
-        holder.totalEachItem.setText(list.get(position).getNumberInCart()+ "*$"+ (
-                list.get(position).getNumberInCart() * list.get(position).getPrice()));
-        holder.num.setText(list.get(position).getNumberInCart()+ "");
+    public void onBindViewHolder(@NonNull viewholder holder, int position) {
+
+
+        holder.title.setText(list.get(holder.getAdapterPosition()).getTitle());
+        holder.feeEachItem.setText("$" + list.get(holder.getAdapterPosition()).getPrice());
+        holder.totalEachItem.setText(list.get(holder.getAdapterPosition()).getNumberInCart()+ "*$"+ (
+                list.get(holder.getAdapterPosition()).getNumberInCart() * list.get(holder.getAdapterPosition()).getPrice()));
+        holder.num.setText(list.get(holder.getAdapterPosition()).getNumberInCart()+"");
 
         Glide.with(holder.itemView.getContext())
-                .load(list.get(position).getImagePath())
+                .load(list.get(holder.getAdapterPosition()).getImagePath())
                 .transform(new CenterCrop(), new RoundedCorners(30))
                 .into(holder.pic);
 
         holder.plusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managermentCart.plusNumberItem(list, position, new ChangeNumberItemsListener() {
+                managermentCart.plusNumberItem(list, holder.getAdapterPosition(), new ChangeNumberItemsListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();
@@ -69,7 +71,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
         holder.minusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managermentCart.minusNumberItem(list, position, new ChangeNumberItemsListener() {
+                managermentCart.minusNumberItem(list, holder.getAdapterPosition(), new ChangeNumberItemsListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();

@@ -1,7 +1,11 @@
 package com.aplication.appfoody.Activity;
 
+import static java.lang.String.format;
+
 import android.os.Bundle;
 import android.view.View;
+
+import com.aplication.appfoody.Adapter.BestFoodsAdapter;
 import com.aplication.appfoody.Domain.Foods;
 import com.aplication.appfoody.Helper.ManagmentCart;
 import com.aplication.appfoody.R;
@@ -37,19 +41,19 @@ public class DetailActivity extends BaseActivity {
                 .load(object.getImagePath())
                 .into(binding.pic);
 
-        binding.priceTxt.setText("$" + object.getPrice());
+        binding.priceTxt.setText(format("$%s", object.getPrice()));
         binding.titleTxt.setText((object.getTitle()));
         binding.descriptionTxt.setText(object.getDescription());
-        binding.rateTxt.setText(object.getStar()+ " Rating");
+        binding.rateTxt.setText(format("%s Rating", object.getStar()));
         binding.ratingBar.setRating((float) object.getStar());
-        binding.totalTxt.setText((num * object.getPrice() + "$"));
+        binding.totalTxt.setText((format("%s$", num * object.getPrice())));
 
         binding.plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 num = num +1;
-                binding.numTxt.setText(num + " ");
-                binding.totalTxt.setText("$" + (num * object.getPrice()));
+                binding.numTxt.setText(format("%d ", num));
+                binding.totalTxt.setText(format("$%s", num * object.getPrice()));
             }
         });
 
