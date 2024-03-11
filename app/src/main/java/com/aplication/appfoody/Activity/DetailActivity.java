@@ -1,10 +1,7 @@
 package com.aplication.appfoody.Activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
-
 import com.aplication.appfoody.Domain.Foods;
 import com.aplication.appfoody.Helper.ManagmentCart;
 import com.aplication.appfoody.R;

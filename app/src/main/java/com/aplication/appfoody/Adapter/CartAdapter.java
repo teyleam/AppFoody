@@ -1,7 +1,6 @@
 package com.aplication.appfoody.Adapter;
 
 import android.content.Context;
-import android.speech.tts.TextToSpeech;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.aplication.appfoody.Domain.Foods;
 import com.aplication.appfoody.Helper.ChangeNumberItemsListener;
 import com.aplication.appfoody.Helper.ManagmentCart;
+import com.aplication.appfoody.Helper.ManagmentCart;
 import com.aplication.appfoody.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
@@ -23,13 +23,13 @@ import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
     ArrayList<Foods> list;
-    private ManagmentCart managmentCart;
+    private ManagmentCart managermentCart;
     ChangeNumberItemsListener changeNumberItemsListener;
 
 
     public CartAdapter(ArrayList<Foods> list, Context context, ChangeNumberItemsListener changeNumberItemsListener) {
         this.list = list;
-        managmentCart = new ManagmentCart(context);
+        managermentCart = new ManagmentCart(context);
         this.changeNumberItemsListener = changeNumberItemsListener;
     }
 
@@ -56,7 +56,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
         holder.plusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managmentCart.plusNumberItem(list, position, new ChangeNumberItemsListener() {
+                managermentCart.plusNumberItem(list, position, new ChangeNumberItemsListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();
@@ -69,7 +69,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
         holder.minusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managmentCart.minusNumberItem(list, position, new ChangeNumberItemsListener() {
+                managermentCart.minusNumberItem(list, position, new ChangeNumberItemsListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();

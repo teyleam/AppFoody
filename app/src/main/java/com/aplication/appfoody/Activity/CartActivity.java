@@ -10,13 +10,12 @@ import android.view.View;
 import com.aplication.appfoody.Adapter.CartAdapter;
 import com.aplication.appfoody.Helper.ChangeNumberItemsListener;
 import com.aplication.appfoody.Helper.ManagmentCart;
-import com.aplication.appfoody.R;
 import com.aplication.appfoody.databinding.ActivityCartBinding;
 
 public class CartActivity extends AppCompatActivity {
     private ActivityCartBinding binding;
     private RecyclerView.Adapter adapter;
-    private ManagmentCart managmentCart;
+    private ManagmentCart managermentCart;
     private double tax;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +23,7 @@ public class CartActivity extends AppCompatActivity {
         binding = ActivityCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        managmentCart = new ManagmentCart(this);
+        managermentCart = new ManagmentCart(this);
 
         setVariable();
         calculateCart();
@@ -32,7 +31,7 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void initList() {
-        if(managmentCart.getListCart().isEmpty()){
+        if(managermentCart.getListCart().isEmpty()){
             binding.emptyTxt.setVisibility(View.VISIBLE);
             binding.scrollviewCart.setVisibility(View.GONE);
         } else {
@@ -42,7 +41,7 @@ public class CartActivity extends AppCompatActivity {
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
         binding.cardView.setLayoutManager(linearLayoutManager);
-        adapter = new CartAdapter(managmentCart.getListCart(), this, new ChangeNumberItemsListener() {
+        adapter = new CartAdapter(managermentCart.getListCart(), this, new ChangeNumberItemsListener() {
             @Override
             public void change() {
                 calculateCart();
@@ -55,9 +54,9 @@ public class CartActivity extends AppCompatActivity {
         double percentTax = 0.02;
         double delivery = 10;
 
-        tax = Math.round(managmentCart.getTotalFee() * percentTax * 100.0) / 100;
-        double total = Math.round((managmentCart.getTotalFee() + tax + delivery) * 100) / 100;
-        double itemTotal = Math.round(managmentCart.getTotalFee()*100) /100;
+        tax = Math.round(managermentCart.getTotalFee() * percentTax * 100.0) / 100;
+        double total = Math.round((managermentCart.getTotalFee() + tax + delivery) * 100) / 100;
+        double itemTotal = Math.round(managermentCart.getTotalFee()*100) /100;
 
         binding.totalFeeTxt.setText("$" + itemTotal);
         binding.taxTxt.setText("$" + tax);
