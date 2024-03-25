@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
     ArrayList<Foods> list;
-    private ManagmentCart managermentCart;
+    final ManagmentCart managermentCart;
     ChangeNumberItemsListener changeNumberItemsListener;
 
 
@@ -41,24 +41,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull viewholder holder, int position) {
+    public void onBindViewHolder(@NonNull viewholder holder,int position) {
 
 
         holder.title.setText(list.get(holder.getAdapterPosition()).getTitle());
-        holder.feeEachItem.setText("$" + list.get(holder.getAdapterPosition()).getPrice());
-        holder.totalEachItem.setText(list.get(holder.getAdapterPosition()).getNumberInCart()+ "*$"+ (
-                list.get(holder.getAdapterPosition()).getNumberInCart() * list.get(holder.getAdapterPosition()).getPrice()));
-        holder.num.setText(list.get(holder.getAdapterPosition()).getNumberInCart()+"");
+        holder.feeEachItem.setText("$" + list.get(position).getPrice());
+        holder.totalEachItem.setText(list.get(holder.getClass().getModifiers()).getNumberInCart()+ "*$"+ (
+                list.get(holder.getClass().getModifiers()).getNumberInCart() * list.get(holder.getClass().getModifiers()).getPrice()));
+        holder.num.setText(list.get(holder.getClass().getModifiers()).getNumberInCart()+"");
 
         Glide.with(holder.itemView.getContext())
-                .load(list.get(holder.getAdapterPosition()).getImagePath())
+                .load(list.get(holder.getClass().getModifiers()).getImagePath())
                 .transform(new CenterCrop(), new RoundedCorners(30))
                 .into(holder.pic);
 
         holder.plusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managermentCart.plusNumberItem(list, holder.getAdapterPosition(), new ChangeNumberItemsListener() {
+                managermentCart.plusNumberItem(list, position, new ChangeNumberItemsListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();
@@ -71,7 +71,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.viewholder> {
         holder.minusItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                managermentCart.minusNumberItem(list, holder.getAdapterPosition(), new ChangeNumberItemsListener() {
+                managermentCart.minusNumberItem(list, position, new ChangeNumberItemsListener() {
                     @Override
                     public void change() {
                         notifyDataSetChanged();
